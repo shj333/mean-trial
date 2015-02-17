@@ -1,5 +1,14 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div.well
+    div.row
+      div.col-md-6
+        p Target graph goes here
+      div.col-md-3
+        ul
+          li(ng-repeat="item in targetData") x: {{ item.x }}, y: {{ item.y }}
+      div.col-md-3
+        <input ng-model="targetData[0].y" />
+        button.btn.btn-success(ng-click="targetData[0].x = targetData[0].x + 1") Update
+        button.btn.btn-success(ng-click="targetData.push({ x: targetData.length + 1, y: targetData.length + 1 })") Another shot!

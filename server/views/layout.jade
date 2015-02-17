@@ -1,7 +1,36 @@
 doctype html
-html
+html(ng-app='hyperbolizer')
   head
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+
+    link(rel='stylesheet', href='/vendor/bootstrap/styles/bootstrap.css')
+    link(rel='stylesheet', href='/styles/hyperbolizer.css')
+
+    script(src='/vendor/angular/angular.min.js')
+    script(src='/javascripts/hyperbolizer.js')
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
+    script(src='/vendor/bootstrap/javascripts/bootstrap.min.js')
+  body(ng-controller="HyperbolizerCtrl")
+    .navbar.navbar-default
+      .container
+        .navbar-header
+          a.navbar-brand(href='/') Hyperbolizer
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        #navbar-main.navbar-collapse.collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/signin/') Sign in
+          ul.nav.navbar-nav.navbar-right
+                li
+                  a(href='/#about') About
+    .container
+      div(ng-view)
+        block content
+      footer
+        .row
+          .col-xs-12
+            small &copy; Randy Enger Enterprises 2015
